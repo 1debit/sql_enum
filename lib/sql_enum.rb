@@ -1,5 +1,10 @@
-require "sql_enum/version"
+require 'active_record'
+
+require_relative 'active_record/enum_type'
+require_relative 'active_record/connection_adapters/mysql2'
+require_relative 'active_record/connection_adapters/abstract_mysql'
+require_relative 'active_record/connection_adapters/mysql/column_methods'
+require_relative "sql_enum/version"
 
 module SqlEnum
-  # Your code goes here...
 end
