@@ -20,7 +20,7 @@ module ActiveRecord
       end
 
       def deserialize(value)
-        value
+        value&.to_sym
       end
 
       def serialize(value)
