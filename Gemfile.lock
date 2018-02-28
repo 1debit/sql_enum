@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    sql_enum (0.1.0)
-      activerecord (~> 5.x)
+    sql_enum (0.1.4)
+      activerecord (~> 5.0)
 
 GEM
   remote: https://rubygems.org/
