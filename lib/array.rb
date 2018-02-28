@@ -1,5 +1,5 @@
 class Array
-  def fetch(name, name)
-    name if self.include?(name)
+  def fetch(key, default)
+    key if self.include?(key)
   end
 end
