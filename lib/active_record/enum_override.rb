@@ -5,6 +5,10 @@ module ActiveRecord
     def sql_enum(name, options={})
       enum_prefix = options.delete(:_prefix)
       enum_suffix = options.delete(:_suffix)
+
+      enum_prefix ||= name if SqlEnum.configuration.default_prefix
+      enum_suffix ||= name if SqlEnum.configuration.default_suffix
+
       klass       = self
       enum_values = Array.new
       name        = name.to_sym
