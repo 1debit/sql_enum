@@ -13,7 +13,7 @@ module ActiveRecord
         return if value.blank?
 
         if valid?(value)
-          value.to_s
+          value.to_sym
         else
           assert_valid_value(value)
         end
