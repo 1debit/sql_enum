@@ -24,7 +24,7 @@ module ActiveRecord
       end
 
       def serialize(value)
-        value.to_s
+        value ? value.to_s : nil
       end
 
       def valid?(value)
