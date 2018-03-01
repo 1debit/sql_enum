@@ -14,7 +14,7 @@ module ActiveRecord
       name        = name.to_sym
 
       detect_enum_conflict!(name, name.to_s.pluralize, true)
-      klass.singleton_class.send(:define_method, name.to_s.pluralize) { enum_values }
+      klass.singleton_class.send(:define_method, name.to_s.pluralize) { enum_values.map(&:to_sym) }
 
       detect_enum_conflict!(name, name)
       detect_enum_conflict!(name, "#{name}=")
