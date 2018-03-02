@@ -27,5 +27,4 @@ require_relative 'active_record/fixtures_override'
 require_relative 'active_record/connection_adapters/mysql2'
 require_relative 'active_record/connection_adapters/abstract_mysql'
 require_relative 'active_record/connection_adapters/mysql/column_methods'
-require_relative 'array'
 require_relative "sql_enum/version"
