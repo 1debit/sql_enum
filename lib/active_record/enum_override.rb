@@ -55,11 +55,11 @@ module ActiveRecord
     end
 
     def values(name)
-      schema_values(name).scan(/\w+/).reject{|v| v == 'enum'}
+      schema_values(name).to_s.scan(/\w+/).reject{|v| v == 'enum'}
     end
 
     def schema_values(name)
-      ActiveRecord::Base.connection.exec_query(schema_values_query(name)).rows[0][0]
+      ActiveRecord::Base.connection.exec_query(schema_values_query(name)).rows.dig(0,0)
     end
 
     def schema_values_query(name)
