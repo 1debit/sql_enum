@@ -11,7 +11,7 @@ module ActiveRecord
 
       def register_enum_type(mapping)
         mapping.register_type(%r(enum)i) do |sql_type|
-          Type::Enum.new(limit: sql_type.scan(/\w+/).reject{|v| v == 'enum'})
+          Type::Enum.new(limit: sql_type.scan(/'(.*?)'/).flatten)
         end
       end
     end
