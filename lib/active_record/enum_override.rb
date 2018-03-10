@@ -62,11 +62,16 @@ module ActiveRecord
       ActiveRecord::Base.connection.exec_query(schema_values_query(name)).rows.dig(0,0)
     end
 
+    def database_name
+      ActiveRecord::Base.connection_config[:database]
+    end
+
     def schema_values_query(name)
       %{
         SELECT column_type
         FROM information_schema.COLUMNS
-        WHERE TABLE_NAME = '#{self.table_name}'
+        WHERE TABLE_SCHEMA = '#{database_name}'
+        AND TABLE_NAME = '#{table_name}'
         AND COLUMN_NAME = '#{name}'
       }
     end
