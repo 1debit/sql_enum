@@ -1,7 +1,7 @@
 module ActiveRecord
   module ConnectionAdapters
     class AbstractMysqlAdapter
-      def initialize_type_map_with_enum(m)
+      def initialize_type_map_with_enum(m = type_map)
         initialize_without_enum(m)
         register_enum_type(m)
       end
