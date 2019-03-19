@@ -41,7 +41,7 @@ module ActiveRecord
 
         # def active?() status == 0 end
         klass.send(:detect_enum_conflict!, name, "#{value_method_name}?")
-        define_method("#{value_method_name}?") { self[attr] == value.to_s }
+        define_method("#{value_method_name}?") { self[attr] == value.to_sym }
 
         # def active!() update! status: :active end
         klass.send(:detect_enum_conflict!, name, "#{value_method_name}!")
