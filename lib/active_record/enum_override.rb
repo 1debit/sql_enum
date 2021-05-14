@@ -20,8 +20,15 @@ module ActiveRecord
       detect_enum_conflict!(name, "#{name}=")
 
       attr = attribute_alias?(name) ? attribute_alias(name) : name
-      decorate_attribute_type(attr, :enum) do |subtype|
-        EnumType.new(attr, enum_values, subtype)
+
+      if Rails.version >= '6.1'
+        decorate_attribute_type(name) do |subtype|
+          EnumType.new(attr, enum_values, subtype)
+        end
+      else
+        decorate_attribute_type(attr, :enum) do |subtype|
+          EnumType.new(attr, enum_values, subtype)
+        end
       end
 
       enum_values = values(name)
