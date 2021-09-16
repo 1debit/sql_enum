@@ -70,7 +70,11 @@ module ActiveRecord
     end
 
     def database_name
-      ActiveRecord::Base.connection_config[:database]
+      if ActiveRecord::Base.respond_to?(:connection_db_config)
+        ActiveRecord::Base.connection_db_config.configuration_hash[:database]
+      else
+        ActiveRecord::Base.connection_config[:database_name]
+      end
     end
 
     def schema_values_query(name)
