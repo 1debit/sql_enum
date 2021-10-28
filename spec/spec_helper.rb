@@ -1,6 +1,8 @@
 require "bundler/setup"
 require "sql_enum"
 
+Dir['spec/support/**/*.rb'].each { |f| require File.expand_path(f) }
+
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
