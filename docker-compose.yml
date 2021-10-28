@@ -1,0 +1,23 @@
+services:
+  rspec:
+    build: .
+    environment:
+      DATABASE_URL: "mysql2://${MYSQL_USER}:${MYSQL_PASSWORD}@mysql/${MYSQL_DATABASE}"
+    volumes:
+      - ./:/usr/src/app/
+    depends_on:
+      mysql:
+        condition: service_healthy
+    command: bundle exec rspec
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
