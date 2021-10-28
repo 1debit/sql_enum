@@ -10,6 +10,7 @@ module SqlEnum
 end
 
 require 'active_record'
+require 'active_support/core_ext/module/concerning'
 
 require_relative 'active_record/type/enum'
 require_relative 'active_record/connection_adapters/mysql2'
