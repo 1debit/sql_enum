@@ -1,12 +1,9 @@
-FROM ruby:3.0
-
-# throw errors if Gemfile has been modified since Gemfile.lock
-RUN bundle config --global frozen 1
+FROM ruby:2.7
 
 WORKDIR /usr/src/app
 
-# Bundler caching
-RUN mkdir -p lib/sql_enum
+RUN mkdir -p lib/sql_enum gemfiles
 COPY lib/sql_enum/version.rb  ./lib/sql_enum/
-COPY sql_enum.gemspec Gemfile Gemfile.lock ./
-RUN bundle install
+COPY gemfiles/*.gemfile gemfiles/
+COPY sql_enum.gemspec Gemfile Gemfile.lock Appraisals ./
+RUN bundle install && exec appraisal install

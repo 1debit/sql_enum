@@ -1,6 +1,8 @@
 require "bundler/setup"
 require "sql_enum"
 
+require 'debug'
+
 Dir['spec/support/**/*.rb'].each { |f| require File.expand_path(f) }
 
 RSpec.configure do |config|
