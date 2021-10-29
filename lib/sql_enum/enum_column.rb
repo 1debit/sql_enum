@@ -21,13 +21,13 @@ module SqlEnum
     end
 
     def schema_values_query
-      <<~EOSQL
-      SELECT column_type
-      FROM information_schema.COLUMNS
-      WHERE TABLE_SCHEMA = '#{database_name}'
-      AND TABLE_NAME = '#{table_name}'
-      AND COLUMN_NAME = '#{column_name}'
-      EOSQL
+      <<~SQL
+        SELECT column_type
+        FROM information_schema.COLUMNS
+        WHERE TABLE_SCHEMA = '#{database_name}'
+        AND TABLE_NAME = '#{table_name}'
+        AND COLUMN_NAME = '#{column_name}'
+      SQL
     end
   end
 end
