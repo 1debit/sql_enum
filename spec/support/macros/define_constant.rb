@@ -56,15 +56,3 @@ module DefineConstantMacros
     @created_tables ||= []
   end
 end
-
-RSpec.configure do |config|
-  config.include DefineConstantMacros
-
-  config.before(:all) do
-    ActiveRecord::Base.establish_connection(ENV.fetch('DATABASE_URL'))
-  end
-
-  config.after do
-    clear_generated_tables
-  end
-end

@@ -1,7 +1,6 @@
 require "bundler/setup"
+require "debug"
 require "sql_enum"
-
-require 'debug'
 
 Dir['spec/support/**/*.rb'].each { |f| require File.expand_path(f) }
 
@@ -14,5 +13,18 @@ RSpec.configure do |config|
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
+  end
+
+  # allow "fit" examples
+  config.filter_run_when_matching :focus
+
+  config.include DefineConstantMacros
+
+  config.before(:all) do
+    ActiveRecord::Base.establish_connection(ENV.fetch('DATABASE_URL'))
+  end
+
+  config.after do
+    clear_generated_tables
   end
 end

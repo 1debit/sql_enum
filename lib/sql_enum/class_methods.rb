@@ -1,6 +1,9 @@
 module SqlEnum
   module ClassMethods
     def sql_enum(column_name, options = {})
+      # skip redefinitions
+      return if defined_enums.key?(column_name.to_s)
+
       # Query values
       enum_column = EnumColumn.new(table_name, column_name)
       values_map = enum_column.values.to_h { |value| [value.to_sym, value.to_s] }
@@ -26,8 +29,8 @@ module SqlEnum
 
       # Fix query methods to compare symbols to symbols
       values_map.each_value do |value|
-        method_name = "#{prefix_str}#{value}#{suffix_str}"
-        define_method("#{method_name}?") { self[column_name] == value.to_sym }
+        method_name = "#{prefix_str}#{value}#{suffix_str}?"
+        define_method(method_name) { self[column_name] == value.to_sym }
       end
     end
 
