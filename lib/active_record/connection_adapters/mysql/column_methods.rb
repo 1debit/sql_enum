@@ -5,7 +5,7 @@ module ActiveRecord
     module MySQL
       module ColumnMethods
         def enum(*args, **options)
-          args.each { |name| column(name, :enum, options) }
+          args.each { |name| column(name, :enum, **options) }
         end
       end
     end
