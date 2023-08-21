@@ -21,7 +21,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    name: RSpec (Rails ${{ matrix.rails }})
+    name: RSpec (Rails ${{ matrix.rails }}) (Ruby ${{ matrix.ruby }})
 
     steps:
       - uses: actions/checkout@v2
