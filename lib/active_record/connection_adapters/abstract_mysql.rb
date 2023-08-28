@@ -1,3 +1,6 @@
+# This module fails in Rails 7.0 becuase the method being modified has been
+# changed to a class method.
+
 module ActiveRecord
   module ConnectionAdapters
     class AbstractMysqlAdapter
