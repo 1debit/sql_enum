@@ -7,7 +7,7 @@ PATH
       mysql2
 
 GEM
-  remote: https://gem-proxy.chime.com/
+  remote: https://rubygems.org/
   specs:
     activemodel (6.1.7.6)
       activesupport (= 6.1.7.6)
