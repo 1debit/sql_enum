@@ -9,7 +9,6 @@ RSpec.describe SqlEnum do
 
     before do
       SqlEnum.configure { |config| config.default_prefix = true }
-
       define_model('Task',
                    status: [:enum, limit: statuses, default: 'pending'],
                    priority: [:enum, limit: priorities]) do
