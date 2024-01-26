@@ -2,6 +2,8 @@ PATH
   remote: .
   specs:
     sql_enum (1.0.0)
+      activerecord (~> 7.0.0)
+      activesupport (~> 7.0.0)
       mysql2
 
 GEM
@@ -65,8 +67,6 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activerecord (~> 7.0.0)
-  activesupport (~> 7.0.0)
   appraisal
   awesome_print
   bundler
