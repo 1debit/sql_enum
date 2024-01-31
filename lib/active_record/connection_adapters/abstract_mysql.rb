@@ -4,7 +4,7 @@ module ActiveRecord
       class << self
         def register_enum_type(mapping)
           mapping.register_type(%r(enum)i) do |sql_type|
-            Type::Enum.new(limit: sql_type.scan(/'(.*?)'/).flatten)
+            Type::Enum.new(limit: sql_type.to_s.scan(/'(.*?)'/).flatten)
           end
         end
       end
