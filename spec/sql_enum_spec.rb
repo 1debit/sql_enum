@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe SqlEnum do
   it "has a version number" do
     expect(SqlEnum::VERSION).not_to be_nil
@@ -11,12 +9,12 @@ RSpec.describe SqlEnum do
 
     before do
       SqlEnum.configure { |config| config.default_prefix = true }
-
       define_model('Task',
                    status: [:enum, limit: statuses, default: 'pending'],
                    priority: [:enum, limit: priorities]) do
         sql_enum :status
         sql_enum :priority, _prefix: false, _suffix: true
+        sql_enum :status # duplicate should be no-op
       end
     end
 

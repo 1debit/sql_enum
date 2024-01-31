@@ -1,43 +1,48 @@
 PATH
   remote: .
   specs:
-    sql_enum (0.4.0)
-      activerecord (>= 6.0, < 7.0)
-      activesupport (>= 6.0, < 7.0)
+    sql_enum (1.0.0)
+      activerecord (>= 6.1.0)
+      activesupport (>= 6.1.0)
       mysql2
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (6.1.7.6)
-      activesupport (= 6.1.7.6)
-    activerecord (6.1.7.6)
-      activemodel (= 6.1.7.6)
-      activesupport (= 6.1.7.6)
-    activesupport (6.1.7.6)
+    activemodel (7.0.8)
+      activesupport (= 7.0.8)
+    activerecord (7.0.8)
+      activemodel (= 7.0.8)
+      activesupport (= 7.0.8)
+    activesupport (7.0.8)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-      zeitwerk (~> 2.3)
     appraisal (2.5.0)
       bundler
       rake
       thor (>= 0.14.0)
-    concurrent-ruby (1.2.2)
-    debug (1.8.0)
-      irb (>= 1.5.0)
-      reline (>= 0.3.1)
+    awesome_print (1.9.2)
+    concurrent-ruby (1.2.3)
+    debug (1.9.1)
+      irb (~> 1.10)
+      reline (>= 0.3.8)
     diff-lcs (1.5.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    io-console (0.6.0)
-    irb (1.7.4)
-      reline (>= 0.3.6)
-    minitest (5.19.0)
+    io-console (0.7.2)
+    irb (1.11.1)
+      rdoc
+      reline (>= 0.4.2)
+    minitest (5.21.2)
     mysql2 (0.5.5)
-    rake (13.0.6)
-    reline (0.3.8)
+    psych (5.1.2)
+      stringio
+    rake (13.1.0)
+    rdoc (6.6.2)
+      psych (>= 4.0.0)
+    reline (0.4.2)
       io-console (~> 0.5)
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
@@ -52,10 +57,10 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-support (3.12.1)
-    thor (1.2.2)
+    stringio (3.1.0)
+    thor (1.3.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    zeitwerk (2.6.11)
 
 PLATFORMS
   ruby
@@ -63,6 +68,7 @@ PLATFORMS
 
 DEPENDENCIES
   appraisal
+  awesome_print
   bundler
   debug
   rake (~> 13.0)
@@ -70,4 +76,4 @@ DEPENDENCIES
   sql_enum!
 
 BUNDLED WITH
-   2.2.30
+   2.5.5

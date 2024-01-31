@@ -2,6 +2,12 @@
 
 Enables usage of native sql enums with ActiveRecord
 
+## NOTE
+
+Version 1.0 of this is compatible with Rails 7 and above.
+
+For Rails versions below Rails 7, use version 0.4
+
 ## Installation
 
 Add this line to your application's Gemfile:
