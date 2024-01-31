@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     sql_enum (1.0.0)
-      activerecord (~> 7.0.0)
-      activesupport (~> 7.0.0)
+      activerecord (>= 6.1.0)
+      activesupport (>= 6.1.0)
       mysql2
 
 GEM
