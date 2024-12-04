@@ -58,7 +58,7 @@ end
 
 ### Testing
 
-Run `docker-compose run --rm rspec` to run the specs in a docker container alongside Mysql.
+Run `docker compose run --rm rspec` to run the specs in a docker container alongside Mysql.
 
 ## Contributing
 
