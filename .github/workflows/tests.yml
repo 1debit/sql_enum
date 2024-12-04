@@ -18,7 +18,7 @@ jobs:
           - '6.1'
           - '7.0'
           - '7.1'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     name: RSpec (Rails ${{ matrix.rails }}) (Ruby ${{ matrix.ruby }})
 
