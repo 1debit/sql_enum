@@ -13,11 +13,20 @@ module SqlEnum
       suffix = options.fetch(:_suffix, !!SqlEnum.configuration&.default_suffix)
 
       # Define enum using Rails enum
-      enum(column_name => values_map, _prefix: prefix, _suffix: suffix)
+      enum(column_name, values_map, prefix: prefix, suffix: suffix)
 
       # Override reader to return symbols
-      type_definition = ->(subtype) { EnumType.new(attr, send(column_name.to_s.pluralize), subtype) }
-      attribute(column_name, &type_definition)
+      col_name = column_name.to_s
+      enum_type = ->(subtype) do
+        subtype = subtype.subtype if ActiveRecord::Enum::EnumType === subtype
+        EnumType.new(col_name, send(col_name.pluralize), subtype)
+      end
+
+      if respond_to?(:decorate_attributes, true)
+        decorate_attributes([col_name]) { |_name, subtype| enum_type.call(subtype) }
+      else
+        attribute(column_name, &enum_type)
+      end
 
       prefix_str = format_affix(column_name, prefix, suffix: '_')
       suffix_str = format_affix(column_name, suffix, prefix: '_')

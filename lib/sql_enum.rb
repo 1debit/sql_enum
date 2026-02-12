@@ -7,10 +7,6 @@ module SqlEnum
     self.configuration ||= Configuration.new
     yield(configuration)
   end
-
-  def self.rails_version_match?(version_string)
-    ActiveSupport.version.to_s.start_with?(version_string)
-  end
 end
 
 require 'active_record'
