@@ -4,9 +4,9 @@ Enables usage of native sql enums with ActiveRecord
 
 ## NOTE
 
-Version 1.0 of this is compatible with Rails 7 and above.
+Version 2.0 of this gem requires Rails 7.1+ and Ruby 3.2+.
 
-For Rails versions below Rails 7, use version 0.4
+For Rails 7.0 and 7.1, use version 1.0. For Rails versions below 7, use version 0.4.
 
 ## Installation
 
@@ -30,7 +30,7 @@ Or install it yourself as:
 
 Use a part of table definition:
 ```ruby
-class CreateUsers < ActiveRecord::Migration[5.1]
+class CreateUsers < ActiveRecord::Migration[7.1]
   def change
     create_table :users do |t|
       t.enum :status, limit: [:active, :pending, :inactive], default: :active

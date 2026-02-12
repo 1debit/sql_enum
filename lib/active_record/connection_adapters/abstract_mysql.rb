@@ -9,30 +9,10 @@ module ActiveRecord
         end
       end
 
-      # Rails 7.1 drops the TYPE_MAP_WITH_BOOLEAN constant
-      if SqlEnum.rails_version_match?("7.1")
-          AbstractMysqlAdapter.register_enum_type(
-            ActiveRecord::ConnectionAdapters::Mysql2Adapter::TYPE_MAP
-          )
-      end
-
-      if SqlEnum.rails_version_match?("7.2")
-        AbstractMysqlAdapter.register_enum_type(
-          ActiveRecord::ConnectionAdapters::Mysql2Adapter::TYPE_MAP
-        )
-      end
-
-      if SqlEnum.rails_version_match?("8.0")
-        AbstractMysqlAdapter.register_enum_type(
-          ActiveRecord::ConnectionAdapters::Mysql2Adapter::TYPE_MAP
-        )
-      end
-
-      if SqlEnum.rails_version_match?(".1")
-        AbstractMysqlAdapter.register_enum_type(
-          ActiveRecord::ConnectionAdapters::Mysql2Adapter::TYPE_MAP
-        )
-      end
+      # Rails 7.1+ uses a single TYPE_MAP constant on the adapter class
+      AbstractMysqlAdapter.register_enum_type(
+        ActiveRecord::ConnectionAdapters::Mysql2Adapter::TYPE_MAP
+      )
     end
   end
 end

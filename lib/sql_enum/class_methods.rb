@@ -17,9 +17,15 @@ module SqlEnum
 
       # Override reader to return symbols
       col_name = column_name.to_s
-      decorate_attributes([col_name]) do |_name, subtype|
+      enum_type = ->(subtype) do
         subtype = subtype.subtype if ActiveRecord::Enum::EnumType === subtype
         EnumType.new(col_name, send(col_name.pluralize), subtype)
+      end
+
+      if respond_to?(:decorate_attributes, true)
+        decorate_attributes([col_name]) { |_name, subtype| enum_type.call(subtype) }
+      else
+        attribute(column_name, &enum_type)
       end
 
       prefix_str = format_affix(column_name, prefix, suffix: '_')

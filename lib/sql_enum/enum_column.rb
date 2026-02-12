@@ -9,15 +9,15 @@ module SqlEnum
     private
 
     def schema_values
-      ActiveRecord::Base.connection.exec_query(schema_values_query).rows.dig(0, 0)
+      if ActiveRecord::Base.respond_to?(:with_connection)
+        ActiveRecord::Base.with_connection { |conn| conn.exec_query(schema_values_query).rows.dig(0, 0) }
+      else
+        ActiveRecord::Base.connection.exec_query(schema_values_query).rows.dig(0, 0)
+      end
     end
 
     def database_name
-      if ActiveRecord::Base.respond_to?(:connection_db_config)
-        ActiveRecord::Base.connection_db_config.configuration_hash[:database]
-      else
-        ActiveRecord::Base.connection_config.values_at(:database, :database_name).find(&:present?)
-      end
+      ActiveRecord::Base.connection_db_config.configuration_hash[:database]
     end
 
     def schema_values_query

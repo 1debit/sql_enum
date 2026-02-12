@@ -12,3 +12,5 @@
 
 gemfiles/*.lock
 .env.local
+*.gem
+/.claude
